@@ -1,21 +1,20 @@
-// document.getElementById('playnowBtn').addEventListener('click', function(){
-//   const playStart = document.getElementById('startPlaying');
-//   playStart.classList.add('hidden');
-// })
+document.getElementById('play-btn').addEventListener('click', function () {
+  document.getElementById('home').classList.add('hidden');
+  document.getElementById('final-page').classList.add('hidden');
+  const removeCls = document.getElementById('Playground');
+  removeCls.classList.remove('hidden');
+})
 
+document.addEventListener('keydown', function (event) {
+  const typedLetter = event.key.toLowerCase();
 
-function continueGame(){
-  const randomIndex = Math.round(Math.random*25);
-  const alphabetstring = 'abcdefghijklmnopqrstuvwxyz/';
-  const alphabets = alphabetstring.split('');
+  if (typedLetter === randomAlphabet) {
+    document.getElementById('screen-alphabet').innerText = ''
+    const randomAlphabetIndex = Math.floor(Math.random() * 26);
+    const randomAlphabet = alphabetArray[randomAlphabetIndex];
 
-  const alphabet = alphabets[randomIndex];
-  console.log(alphabets);
-  randomLetter(alphabet)
-
-}
-function play(){
-  hideElementByID('startPlaying');
-  showElementByID('playground');
-  continueGame();
-}
+    document.getElementById('screen-alphabet').innerText = randomAlphabet.toUpperCase();
+    typedLetter='';
+  }
+})
+letterInteraction(randomAlphabet);

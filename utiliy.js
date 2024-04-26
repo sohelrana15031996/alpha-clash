@@ -1,10 +1,18 @@
-const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
-const alphabetArray = alphabetString.split('');
-const randomAlphabetIndex = Math.floor(Math.random()*26);
-const randomAlphabet = alphabetArray[randomAlphabetIndex];
 
-document.getElementById('screen-alphabet').innerText = randomAlphabet.toUpperCase();
+function hideElement(elementId) {
+  document.getElementById(elementId).classList.add('hidden');
+}
 
-function letterInteraction(letterID){
-  document.getElementById(letterID).style.background ='orange';
+// fucntion for remove hidden class
+function showElement(elementId) {
+  document.getElementById(elementId).classList.remove('hidden')
+}
+
+function randomAlphabet() {
+  const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
+  const alphabetArray = alphabetString.split('');
+  const randomNumber = Math.random() * 26;
+  const indexNumber = Math.floor(randomNumber);
+  const letter = alphabetArray[indexNumber];
+  return letter;
 }

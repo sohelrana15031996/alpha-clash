@@ -16,3 +16,9 @@ function randomAlphabet() {
   const letter = alphabetArray[indexNumber];
   return letter;
 }
+
+// Highlighting letter on keyboard
+
+function highlightLetter(letterId){
+  document.getElementById(letterId).style.background = 'orange';
+}

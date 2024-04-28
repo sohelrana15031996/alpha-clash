@@ -20,5 +20,8 @@ function randomAlphabet() {
 // Highlighting letter on keyboard
 
 function highlightLetter(letterId){
-  document.getElementById(letterId).style.background = 'orange';
+  document.getElementById(letterId).classList.add('bg-orange-400');
+}
+function removeHighlightLetter(letterId){
+  document.getElementById(letterId).classList.remove('bg-orange-400');
 }

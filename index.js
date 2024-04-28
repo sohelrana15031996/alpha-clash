@@ -1,30 +1,47 @@
 
-function buttonPressEvent(event){
+function buttonPressEvent(event) {
   const pressedKey = event.key;
-  console.log('You are pressed', pressedKey);
-  console.log('Displaying', randomAlphabet());
-// targeting alphabet.
+  // targeting alphabet.
   const targetLetter = document.getElementById('screen-alphabet').innerText.toLocaleLowerCase();
-  console.log('targeting letter is ', targetLetter)
-  if(pressedKey === targetLetter){
-    console.log('You are press right key')
-  }else{
-    console.log('You press wrong key.')
+  if (pressedKey === targetLetter) {
+    const letterOnDisplay = document.getElementById('screen-alphabet').innerText.toLowerCase();
+    removeHighlightLetter(letterOnDisplay);
+    continueGame();
+    let score = document.getElementById('gameScore').innerText;
+    console.log(score);
+    let scoreNumber = parseInt(score);
+
+
+    scoreNumber += 1;
+    console.log(scoreNumber);
+    document.getElementById('gameScore').innerText = scoreNumber;
+  } else {
+    let gameLife = document.getElementById('gameChance').innerText;
+    let lifeInNumber = parseInt(gameLife);
+    lifeInNumber -= 1;
+    document.getElementById('gameChance').innerText = lifeInNumber;
+    console.log(lifeInNumber);
+    if (lifeInNumber === 0) {
+      hideElement('Playground');
+      showElement('final-page');
+      const finalScore = document.getElementById('gameScore').innerText;
+      document.getElementById('final-score').innerText = finalScore;
+    }
   }
 }
 
+
+document.getElementById('play-again-btn').addEventListener('click', function () {
+  hideElement('final-page');
+  showElement('Playground');
+  document.getElementById('gameScore').innerText = '0';
+  document.getElementById('gameChance').innerText = '4';
+})
+
 document.addEventListener('keyup', buttonPressEvent);
-
-// check pressed key and display letter are same or not
-
-// const displayedLetter = randomAlphabet();
-// const pressedLetter = buttonPressEvent();
-
-
-
-function continueGame(){
+function continueGame() {
   const randomLetter = randomAlphabet();
-  
+
   // Display alphabet in the display;
   const displayLetter = document.getElementById('screen-alphabet');
   displayLetter.innerText = randomLetter.toUpperCase();
@@ -34,8 +51,7 @@ function continueGame(){
 
 
 }
-
-function startPlay(){
+function startPlay() {
   hideElement('home');
   showElement('Playground');
   continueGame();
